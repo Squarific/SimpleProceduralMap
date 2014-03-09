@@ -28,6 +28,7 @@
 					boatlevel: parseFloat(document.getElementById("boatlevel").value),
 					zoom: parseFloat(document.getElementById("zoom").value)
 				}, ["ground", "water", "house", "boat"]).generateMap().printToDom(document.getElementById("output")).printToConsole();
+				return false;
 			}
 			newMap();
 		</script>
