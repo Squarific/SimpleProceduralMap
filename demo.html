@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Simple Procedural Map</title>
+	</head>
+	<body>
+		<div id="settings">
+			<form action="#" onsubmit="newMap()">
+				Seed: &nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input id="seed" value="165" placeholder="seed" /><br/>
+				MapWidth: &nbsp;&nbsp; <input id="mapwidth" value="100" placeholder="MapWidth" /><br/>
+				MapHeight: &nbsp;&nbsp; <input id="mapheight" value="20" placeholder="MapHeight" /><br/>
+				Waterlevel: &nbsp; <input id="waterlevel" value="0.15" placeholder="waterlevel" /><br/>
+				Houselevel: &nbsp; <input id="houselevel" value="0.1" placeholder="houselevel" /><br/>
+				Boatlevel: &nbsp; <input id="boatlevel" value="0.15" placeholder="boatlevel" /><br/>
+				Zoom:	&nbsp; <input id="zoom" value="0.6" placeholder="zoom" /><br/>
+				<input type="submit" value="Generate Map">
+			</form>
+		</div>
+		<div id="output" style='font-family:"Courier New", Courier, monospace;'>
+		</div>
+		<script src="noise.js"></script>
+		<script src="simpleProcedural.js"></script>
+		<script>
+			function newMap () {
+				new SimpleProcedural(parseFloat(document.getElementById("seed").value), parseInt(document.getElementById("mapwidth").value), parseInt(document.getElementById("mapheight").value), {
+					waterlevel: parseFloat(document.getElementById("waterlevel").value),
+					houselevel: parseFloat(document.getElementById("houselevel").value),
+					boatlevel: parseFloat(document.getElementById("boatlevel").value),
+					zoom: parseFloat(document.getElementById("zoom").value)
+				}, ["ground", "water", "house", "boat"]).generateMap().printToDom(document.getElementById("output")).printToConsole();
+			}
+			newMap();
+		</script>
+	</body>
+</html>
